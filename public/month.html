@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
+    <link rel="stylesheet" href="styles/month.css">
+</head>
+
+<body>
+
+
+    <div class="month">
+        <ul>
+            <li class="prev" id='prev'>&#10094;</li>
+            <li class="next" id='next'>&#10095;</li>
+            <li id='backForToday'>
+                <span id='monthName'></span><br>
+                <span id='year' style="font-size:18px">2017</span>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="weekdays">
+        <li>Su</li>
+        <li>Mo</li>
+        <li>Tu</li>
+        <li>We</li>
+        <li>Th</li>
+        <li>Fr</li>
+        <li>Sa</li>
+    </ul>
+
+    <ul class="days">
+      <div class="ui grid">
+        <div class="seven column row" id='days'>
+        </div>
+      </div>
+    </ul>
+
+    <script src="templates/template-handler.js"></script>
+    <script src="scripts/month.js"></script>
+
+    <script></script>
+</body>
+</html>
