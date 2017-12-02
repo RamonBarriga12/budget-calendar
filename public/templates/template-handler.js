@@ -1,10 +1,4 @@
-function Day(dayNumber, outComes, inComes) {
-  this.dayNumber = dayNumber;
-  this.outComes = outComes;
-  this.inComes = inComes;
-  this.total = inComes - outComes;
-  this.status = getStatus(this.total);
-}
+
 
 function getStatus(total) {
   if (total > 0)
@@ -17,7 +11,12 @@ function getStatus(total) {
 
 
 function numberWithCommas (x){
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  if(x) {
+    if (x%1)
+      x = x.toFixed(2);
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  return 0;
 }
 
 function templateModule(url, onReady) {
@@ -46,7 +45,7 @@ function templateModule(url, onReady) {
     }
 
     // Use Template to create HTML element with data
-    function createHTMLElement(_day) {
+    function createHTMLString(_day) {
 
         let htmlString = templateString;
         htmlString = htmlString.replace('*dayNumber*', _day.dayNumber);
@@ -56,15 +55,13 @@ function templateModule(url, onReady) {
         htmlString = htmlString.replace('*status*', _day.status);
         htmlString = htmlString.replace(/-id-/g, 'id');
 
-        let tempHTML = document.createElement('div');
-        tempHTML.innerHTML = htmlString;
-        tempHTML.className = 'column';
 
-        return tempHTML;
+
+        return htmlString;
     }
 
 
     return {
-        createHTMLElement: createHTMLElement
+        createHTMLString: createHTMLString
     }
 }

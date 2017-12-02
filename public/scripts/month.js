@@ -24,22 +24,29 @@ function viewMonth(month, year) {
     daysHTML.innerHTML = "";
     monthNameHTML.innerHTML = monthNames[thisMonth.getMonth()];
     yearHTML.innerHTML = year;
-    console.log(thisMonth);
+
     for(let i = 0; i < thisMonth.getDay(); i++) {
         daysHTML.appendChild(createEmptyDay());
     }
 
     while (thisMonth.getMonth() == month -1) {
 
-        let htmlDay = templateHandler.createHTMLElement(new Day(thisMonth.getDate(), getNumber(), getNumber()));
-        /*let liHTML = document.createElement('li');
-        liHTML.innerHTML = thisMonth.getDate();
-        daysHTML.appendChild(liHTML);
-        if(isDateEqual(today, thisMonth))
-            liHTML.className = 'active';*/
-        if(isDateEqual(today, thisMonth))
-            htmlDay.className += ' active';
-        daysHTML.appendChild(htmlDay);
+      let htmlFather = document.createElement('div');
+      htmlFather.className = 'column';
+      daysHTML.appendChild(htmlFather);
+
+        getDayFromData(thisMonth, function (data, _date, _htmlFather) {
+            let htmlDay;
+            if (data)
+              htmlDay = templateHandler.createHTMLString(data);
+            else
+              htmlDay = templateHandler.createHTMLString(new Day(_date), 0, 0);
+            if(isDateEqual(today, _date))
+                _htmlFather.className += ' active';
+
+            _htmlFather.innerHTML = htmlDay;
+        }, htmlFather);
+
         thisMonth = addDays(thisMonth, 1);
 
     }
@@ -104,5 +111,7 @@ document.getElementById('next').addEventListener('click', function () {
 });
 
 document.getElementById('backForToday').addEventListener('click', function () {
-  viewMonth(today.getMonth() + 1, today.getFullYear());
+  currentMonth = today.getMonth() + 1;
+  currentYear = today.getFullYear();
+  viewMonth(currentMonth, currentYear);
 });

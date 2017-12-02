@@ -40,7 +40,21 @@
         </div>
       </div>
     </ul>
-
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBqDjUsnGPCPNRaaxh3ubtEEKUP7Y4KMTI",
+        authDomain: "budget-calendar-23304.firebaseapp.com",
+        databaseURL: "https://budget-calendar-23304.firebaseio.com",
+        projectId: "budget-calendar-23304",
+        storageBucket: "budget-calendar-23304.appspot.com",
+        messagingSenderId: "130179662725"
+      };
+      firebase.initializeApp(config);
+    
+    </script>
+    <script src="scripts/handle-data.js"></script>
     <script src="templates/template-handler.js"></script>
     <script src="scripts/month.js"></script>
 
