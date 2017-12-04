@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+</head>
+
+<body>
+
+
+    <div class="container panel panel-info row col-xs-10">
+            <div class="panel-heading">
+                <h3 class="panel-title">04-12-2017</h3>
+            </div>
+            <div class="panel-body bg-warnning">
+                
+                <table class="table table-hover">
+                    <thead class="bg-danger">
+                        <tr>
+                            <th>#</th>
+                            <th>To</th>
+                            <th>Reference</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Palphot</td>
+                            <td>2256</td>
+                            <td>5,000</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Habalon Haporeach</td>
+                            <td>1124</td>
+                            <td>6,500</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <<td>Habalon Haporeach</td>
+                            <td>1124</td>
+                            <td>6,500</td>
+                        </tr>
+                    </tbody>
+                    </table>
+
+                    <table class="table table-hover">
+                    <thead class="bg-success">
+                        <tr>
+                            <th>#</th>
+                            <th>To</th>
+                            <th>Reference</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Palphot</td>
+                            <td>2256</td>
+                            <td>5,000</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Habalon Haporeach</td>
+                            <td>1124</td>
+                            <td>6,500</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <<td>Habalon Haporeach</td>
+                            <td>1124</td>
+                            <td>6,500</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    <button class="ui teal button big fluid" id='editBtn'> Edit </button>
+            </div>
+
+            
+        </div>
+
+
+
+         <div class="container panel panel-info row col-xs-10 hidden" id='editingPanel'>
+            <div class="panel-heading">
+                <h3 class="panel-title">Add or Edit Line</h3>
+            </div>
+            <div class="panel-body">
+                
+                <form>
+                    <div class="form-group">
+                        <label for="to">To:</label>
+                        <input type="text" class="form-control" id="to" placeholder="To">
+                    </div>
+                    <div class="form-group">
+                        <label for="reference">Reference:</label>
+                        <input type="text" class="form-control" id="reference" placeholder="Reference">
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount:</label>
+                        <input type="number" class="form-control" id="amount" placeholder="Amount">
+                    </div>
+                    
+                    <div class="ui buttons fluid">
+                        <button class="ui button big" id='cancelBtn'>Cancel</button>
+                        <div class="or "></div>
+                        <button class="ui positive button big" id='saveBtn'>Save</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+    
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBqDjUsnGPCPNRaaxh3ubtEEKUP7Y4KMTI",
+        authDomain: "budget-calendar-23304.firebaseapp.com",
+        databaseURL: "https://budget-calendar-23304.firebaseio.com",
+        projectId: "budget-calendar-23304",
+        storageBucket: "budget-calendar-23304.appspot.com",
+        messagingSenderId: "130179662725"
+      };
+      firebase.initializeApp(config);
+    
+    </script>
+    <!--<script src="scripts/handle-data.js"></script>
+    <script src="templates/template-handler.js"></script>
+    <script src="scripts/month.js"></script>
+-->
+    <script>
+        let toHTML = document.getElementById('to');
+        let referenceHTML = document.getElementById('reference');
+        let amountHTML = document.getElementById('amount');
+        let editingPanelHTML = document.getElementById('editingPanel');
+        
+
+        document.getElementById('saveBtn').addEventListener('click', function(e){
+            e.preventDefault();
+            console.log ('save ' + toHTML.value + ' ' + referenceHTML.value + ' ' + amountHTML.value);
+            editingPanelHTML.className +=' hidden';
+        });
+
+        document.getElementById('cancelBtn').addEventListener('click', function(e){
+            e.preventDefault();
+            editingPanelHTML.className +=' hidden';
+            console.log('cancel');
+        });
+
+        document.getElementById('editBtn').addEventListener('click', function(e){
+            e.preventDefault();
+            editingPanelHTML.className = editingPanelHTML.className.replace('hidden', '');
+            console.log('edit');
+        });
+    </script>
+</body>
+</html>
