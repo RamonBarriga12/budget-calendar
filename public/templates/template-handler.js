@@ -53,6 +53,7 @@ function templateModule(url, onReady) {
         htmlString = htmlString.replace('*inComes*', numberWithCommas(_day.inComes));
         htmlString = htmlString.replace('*total*', numberWithCommas(_day.total));
         htmlString = htmlString.replace('*status*', _day.status);
+        htmlString = htmlString.replace('*date*', _day.date);
         htmlString = htmlString.replace(/-id-/g, 'id');
 
 

@@ -4,6 +4,7 @@ function Day(_date, outComes, inComes) {
   this.inComes = inComes;
   this.total = inComes - outComes;
   this.status = getStatus(this.total);
+  this.date = formatDate(_date);
 }
 
 function getDay(_date) {
@@ -28,7 +29,7 @@ function getDayFromData(_date, callback, htmlFather) {
         var temp = (snapshot.val());
         if (temp) {
           temp = new Day (_date, temp.outComes, temp.inComes);
-          var statusChangeRef = firebase.database().ref('/days/' +formatDate(_date));
+          var statusChangeRef = firebase.database().ref('/days/' + formatDate(_date));
           statusChangeRef.on('value', function(snapshot) {
             callback(new Day(_date, snapshot.val().outComes, snapshot.val().inComes), _date, htmlFather);
           });

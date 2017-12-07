@@ -23,10 +23,16 @@ body {
     margin: 0;
     padding: 0;
 }
+.column .ui.segment{
+  font-size: 14px;
+}
 
+.column .ui.ribbon.label {
+  font-size: 14px;
+}
 .month ul li {
     color: white;
-    font-size: 20px;
+    font-size: 25px;
     text-transform: uppercase;
     letter-spacing: 3px;
 }
@@ -73,7 +79,7 @@ body {
     width: 13.6%;
     text-align: center;
     margin-bottom: 5px;
-    font-size:12px;
+
     color:#777;
     height: 100px;
     /*border: 1px solid black;*/
@@ -88,4 +94,53 @@ body {
 
 .active .ui {
   background-color: #D6FFE1;
+}
+
+
+
+
+
+
+
+
+/* The actual popup (appears on top) */
+.popuptext {
+    visibility: hidden;
+    width: 450px;
+    border-radius: 10px;
+    position: fixed;
+    z-index: 1;
+    left: 25%;
+    top: 40px;
+    
+}
+
+/* Popup arrow */
+/*.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}*/
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popuptext.show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
 }
