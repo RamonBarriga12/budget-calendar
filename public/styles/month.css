@@ -4,6 +4,13 @@ body {
     font-family: Verdana, sans-serif;
     width: 1000px;
     margin: auto;
+    direction: rtl;
+
+}
+
+* {
+
+
 }
 
 .ui.grid .seven.column.row .column {
@@ -16,6 +23,10 @@ body {
     width: 100%;
     background: #1abc9c;
     text-align: center;
+}
+
+thead tr {
+  text-align: center;
 }
 
 /* Month list */
@@ -39,14 +50,14 @@ body {
 
 /* Previous button inside month header */
 .month .prev {
-    float: left;
+    float: right;
     padding-top: 10px;
     cursor: pointer;
 }
 
 /* Next button */
 .month .next {
-    float: right;
+    float: left;
     padding-top: 10px;
     cursor: pointer;
 }
@@ -112,7 +123,12 @@ body {
     z-index: 1;
     left: 25%;
     top: 40px;
-    
+
+}
+
+.popuptext thead tr th{
+  text-align: right;
+
 }
 
 /* Popup arrow */

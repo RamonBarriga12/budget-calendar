@@ -2,8 +2,19 @@ let daysHTML = document.getElementById('days');
 let monthNameHTML = document.getElementById('monthName');
 let yearHTML = document.getElementById('year');
 
-var monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
+var monthNames = [
+  "ינואר",
+ "פברואר",
+  "מרץ",
+   "אפריל",
+    "מאי",
+    "יוני",
+  "יולי",
+  "אוגוסט",
+  "ספטמבר",
+  "אוקטובר",
+  "נובמבר",
+  "דצמבר"
 ];
 
 let today = new Date();
@@ -23,6 +34,7 @@ function viewMonth(month, year) {
     let thisMonth = new Date (year, month -1);
     daysHTML.innerHTML = "";
     monthNameHTML.innerHTML = monthNames[thisMonth.getMonth()];
+    
     yearHTML.innerHTML = year;
 
     for(let i = 0; i < thisMonth.getDay(); i++) {
