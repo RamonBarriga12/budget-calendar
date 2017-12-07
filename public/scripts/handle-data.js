@@ -1,8 +1,14 @@
+
+
 function Day(_date, outComes, inComes) {
   this.dayNumber = _date.getDate();
+  if (!Array.isArray(outComes))
+    outComes = [{to: '', ref: '', amount: outComes}];
+  if (!Array.isArray(inComes))
+    inComes = [{to: '', ref: '', amount: inComes}];
   this.outComes = outComes;
   this.inComes = inComes;
-  this.total = inComes - outComes;
+  this.total = sumArray(inComes) - sumArray(outComes);
   this.status = getStatus(this.total);
   this.date = formatDate(_date);
 }
@@ -15,9 +21,10 @@ function getDay(_date) {
 var database = firebase.database();
 
 function writeData(_date, outComes, inComes) {
+  let tempDay = new Day(_date, outComes, inComes);
   let temp = {
-    outComes: outComes,
-    inComes: inComes
+    outComes: tempDay.outComes,
+    inComes: tempDay.inComes
   };
   //new Day (_date, outComes, inComes);
   firebase.database().ref('/days/' + formatDate(_date)).set(temp);
@@ -42,6 +49,14 @@ function getDayFromData(_date, callback, htmlFather) {
   });
 
 }
+
+function sumArray(arr) {
+  let sum = 0;
+  arr.forEach(function(element) {
+    sum += element.amount;
+  }, this);
+  return sum;
+}
 /*
 var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
 starCountRef.on('value', function(snapshot) {
@@ -60,4 +75,9 @@ function formatDate(date) {
     if (day.length < 2) day = '0' + day;
 
     return [day, month, year].join('-');
+}
+
+function formatedDateToDate(date) {
+    var temp = date.split('-');
+    return new Date([temp[1], temp[0], temp[2]].join('-'));
 }

@@ -49,8 +49,8 @@ function templateModule(url, onReady) {
 
         let htmlString = templateString;
         htmlString = htmlString.replace('*dayNumber*', _day.dayNumber);
-        htmlString = htmlString.replace('*outComes*', numberWithCommas(_day.outComes));
-        htmlString = htmlString.replace('*inComes*', numberWithCommas(_day.inComes));
+        htmlString = htmlString.replace('*outComes*', numberWithCommas(sumArray(_day.outComes)));
+        htmlString = htmlString.replace('*inComes*', numberWithCommas(sumArray(_day.inComes)));
         htmlString = htmlString.replace('*total*', numberWithCommas(_day.total));
         htmlString = htmlString.replace('*status*', _day.status);
         htmlString = htmlString.replace('*date*', _day.date);

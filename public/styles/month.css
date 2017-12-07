@@ -160,3 +160,8 @@ thead tr {
     from {opacity: 0;}
     to {opacity:1 ;}
 }
+
+
+.coin::after {
+    content: ' \20AA ';
+}

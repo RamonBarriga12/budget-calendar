@@ -54,8 +54,8 @@
             </div>
             <div class="panel-body bg-warnning">
 
-                <table class="table table-hover">
-                    <thead class="bg-danger">
+                <table class="table table-hover bg-danger">
+                    <thead>
                         <tr>
                             <th>#</th>
                             <th>עבור</th>
@@ -63,7 +63,7 @@
                             <th>סכום</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id='outComesBody'>
                         <tr>
                             <th scope="row">1</th>
                             <td>פלפוט</td>
@@ -85,8 +85,8 @@
                     </tbody>
                     </table>
 
-                    <table class="table table-hover">
-                    <thead class="bg-success">
+                    <table class="table table-hover bg-success">
+                    <thead>
                         <tr>
                             <th>#</th>
                             <th>עבור</th>
@@ -94,7 +94,7 @@
                             <th>סכום</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id='inComesBody'>
                         <tr>
                             <th scope="row">1</th>
                             <td>מזומן</td>
@@ -115,6 +115,16 @@
                         </tr>
                     </tbody>
                     </table>
+
+                    <table class="table table-hover bg-info">
+                    <thead>
+                        <tr>
+                            <th class="center">סך הכל</th>
+                            <th id='sumSpan' class="coin"></th>
+                        </tr>
+                    </thead>
+                    </table>
+                    
                     <button class="ui teal button big fluid" id='editBtn'> הוסף </button>
             </div>
 
@@ -178,16 +188,53 @@
     // When the user clicks on <div>, open the popup
     var popup = document.getElementById("myPopup");
     var popuDate = document.getElementById('popupDate');
+    var incomesBodyHTML = document.getElementById('inComesBody');
+    var outComesBodyHTML = document.getElementById('outComesBody');
+    var sumSpanHTML = document.getElementById('sumSpan');
+
     function myFunction(e) {
 
       popup.classList.toggle("show");
       popuDate.innerHTML = e;
 
+      let htmlFather = document.createElement('div');
+      getDayFromData(formatedDateToDate(e), function(dayObj, _date, htmlFather) {
+          
+          outComesBodyHTML.innerHTML = '';
+          incomesBodyHTML.innerHTML = '';
+
+          dayObj.inComes.forEach(function(element) {
+              var tempTR = createYourElement('tr', incomesBodyHTML, '');
+              createYourElement('th', tempTR, '').scope = 'row';
+              createYourElement('td', tempTR, element['to']);
+              createYourElement('td', tempTR, element['ref']);
+              createYourElement('td', tempTR, numberWithCommas(element['amount'])).className = 'coin';
+          }, this);
+
+          dayObj.outComes.forEach(function(element) {
+              var tempTR = createYourElement('tr', outComesBodyHTML, '');
+              createYourElement('th', tempTR, '').scope = 'row';
+              createYourElement('td', tempTR, element['to']);
+              createYourElement('td', tempTR, element['ref']);
+              createYourElement('td', tempTR, numberWithCommas(element['amount'])).className = 'coin';
+          }, this);
+
+          sumSpanHTML.innerHTML = numberWithCommas(dayObj.total);
+      }, htmlFather);
+      
 
     }
 
+
+    function createYourElement(eName, fatherHTML, innerHTML) {
+        var tempElement = document.createElement(eName);
+        tempElement.innerHTML = innerHTML;
+        fatherHTML.appendChild(tempElement);
+        return tempElement;
+    }
+
     function hidePopup(e) {
-      console.log(e.path);
+      
       z=e.path;
       for (var i = 0; i < e.path.length; i++) {
         if(e.path[i].id == 'myPopup')
@@ -212,20 +259,20 @@
 
         document.getElementById('saveBtn').addEventListener('click', function(e){
             e.preventDefault();
-            console.log ('save ' + toHTML.value + ' ' + referenceHTML.value + ' ' + amountHTML.value);
+            //console.log ('save ' + toHTML.value + ' ' + referenceHTML.value + ' ' + amountHTML.value);
             editingPanelHTML.className +=' hidden';
         });
 
         document.getElementById('cancelBtn').addEventListener('click', function(e){
             e.preventDefault();
             editingPanelHTML.className +=' hidden';
-            console.log('cancel');
+            
         });
 
         document.getElementById('editBtn').addEventListener('click', function(e){
             e.preventDefault();
             editingPanelHTML.className = editingPanelHTML.className.replace('hidden', '');
-            console.log('edit');
+            //console.log('edit');
         });
     </script>
 </body>
