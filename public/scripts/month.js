@@ -26,7 +26,7 @@ let templateHandler = templateModule('templates/month-template.html', function (
 
 function createEmptyDay() {
     let tempHTML = document.createElement('div');
-    tempHTML.className = 'column';
+    tempHTML.className = 'column invisible';
     return tempHTML;
 }
 
@@ -34,7 +34,7 @@ function viewMonth(month, year) {
     let thisMonth = new Date (year, month -1);
     daysHTML.innerHTML = "";
     monthNameHTML.innerHTML = monthNames[thisMonth.getMonth()];
-    
+
     yearHTML.innerHTML = year;
 
     for(let i = 0; i < thisMonth.getDay(); i++) {

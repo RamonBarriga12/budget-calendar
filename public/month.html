@@ -19,33 +19,71 @@
 <body>
 
 
-    <div class="month">
+
+
+    <main class="ui purple segment center">
+      <div class="month-container">
         <ul>
-            <li class="prev" id='prev'>&#10094;</li>
-            <li class="next" id='next'>&#10095;</li>
+          <li class="prev" id='prev'>&#10094;</li>
+          <li class="next" id='next'>&#10095;</li>
             <li id='backForToday'>
-                <span id='monthName'></span><br>
-                <span id='year' style="font-size:18px">2017</span>
-            </li>
+              <span id='monthName'></span><br>
+            <span id='year' style="font-size:18px">2017</span>
+          </li>
+
         </ul>
+
+      </div>
+
+
+
+
+    <div class="ui grid">
+      <div class="seven column row days-title">
+          <div class="column">
+            <div class="ui pink segment">
+              ראשון
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui purple segment">
+              שני
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui blue segment">
+              שלישי
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui red segment">
+              רביעי
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui orange segment">
+              חמישי
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui yellow segment">
+              שישי
+            </div>
+          </div>
+          <div class="column">
+            <div class="ui grey segment">
+              שבת
+            </div>
+          </div>
+
+      </div>
+      <div class="seven column row" id='days'>
+      </div>
     </div>
 
-    <ul class="weekdays">
-        <li>ראשון</li>
-        <li>שני</li>
-        <li>שלישי</li>
-        <li>רביעי</li>
-        <li>חמישי</li>
-        <li>שישי</li>
-        <li>שבת</li>
-    </ul>
 
-    <ul class="days">
-      <div class="ui grid">
-        <div class="seven column row" id='days'>
-        </div>
-      </div>
-    </ul>
+
+  </main>
 
     <div class="popuptext" id="myPopup">
             <div class="panel panel-info">
@@ -64,24 +102,7 @@
                         </tr>
                     </thead>
                     <tbody id='outComesBody'>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>פלפוט</td>
-                            <td>2256</td>
-                            <td>5,000</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>הבלון הפורח</td>
-                            <td>1124</td>
-                            <td>6,500</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>שמחה</td>
-                            <td>1124</td>
-                            <td>6,500</td>
-                        </tr>
+
                     </tbody>
                     </table>
 
@@ -89,30 +110,13 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>עבור</th>
+                            <th>מאת</th>
                             <th>אסמכתא</th>
                             <th>סכום</th>
                         </tr>
                     </thead>
                     <tbody id='inComesBody'>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>מזומן</td>
-                            <td>2256</td>
-                            <td>5,000</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>אשראי</td>
-                            <td>1124</td>
-                            <td>6,500</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>שיקים</td>
-                            <td>1124</td>
-                            <td>6,500</td>
-                        </tr>
+
                     </tbody>
                     </table>
 
@@ -124,7 +128,7 @@
                         </tr>
                     </thead>
                     </table>
-                    
+
                     <button class="ui teal button big fluid" id='editBtn'> הוסף </button>
             </div>
 
@@ -192,38 +196,7 @@
     var outComesBodyHTML = document.getElementById('outComesBody');
     var sumSpanHTML = document.getElementById('sumSpan');
 
-    function myFunction(e) {
 
-      popup.classList.toggle("show");
-      popuDate.innerHTML = e;
-
-      let htmlFather = document.createElement('div');
-      getDayFromData(formatedDateToDate(e), function(dayObj, _date, htmlFather) {
-          
-          outComesBodyHTML.innerHTML = '';
-          incomesBodyHTML.innerHTML = '';
-
-          dayObj.inComes.forEach(function(element) {
-              var tempTR = createYourElement('tr', incomesBodyHTML, '');
-              createYourElement('th', tempTR, '').scope = 'row';
-              createYourElement('td', tempTR, element['to']);
-              createYourElement('td', tempTR, element['ref']);
-              createYourElement('td', tempTR, numberWithCommas(element['amount'])).className = 'coin';
-          }, this);
-
-          dayObj.outComes.forEach(function(element) {
-              var tempTR = createYourElement('tr', outComesBodyHTML, '');
-              createYourElement('th', tempTR, '').scope = 'row';
-              createYourElement('td', tempTR, element['to']);
-              createYourElement('td', tempTR, element['ref']);
-              createYourElement('td', tempTR, numberWithCommas(element['amount'])).className = 'coin';
-          }, this);
-
-          sumSpanHTML.innerHTML = numberWithCommas(dayObj.total);
-      }, htmlFather);
-      
-
-    }
 
 
     function createYourElement(eName, fatherHTML, innerHTML) {
@@ -234,7 +207,7 @@
     }
 
     function hidePopup(e) {
-      
+
       z=e.path;
       for (var i = 0; i < e.path.length; i++) {
         if(e.path[i].id == 'myPopup')
@@ -250,30 +223,8 @@
     </script>
 
 
-    <script>
-        let toHTML = document.getElementById('to');
-        let referenceHTML = document.getElementById('reference');
-        let amountHTML = document.getElementById('amount');
-        let editingPanelHTML = document.getElementById('editingPanel');
+    <script src="scripts/days.js">
 
-
-        document.getElementById('saveBtn').addEventListener('click', function(e){
-            e.preventDefault();
-            //console.log ('save ' + toHTML.value + ' ' + referenceHTML.value + ' ' + amountHTML.value);
-            editingPanelHTML.className +=' hidden';
-        });
-
-        document.getElementById('cancelBtn').addEventListener('click', function(e){
-            e.preventDefault();
-            editingPanelHTML.className +=' hidden';
-            
-        });
-
-        document.getElementById('editBtn').addEventListener('click', function(e){
-            e.preventDefault();
-            editingPanelHTML.className = editingPanelHTML.className.replace('hidden', '');
-            //console.log('edit');
-        });
     </script>
 </body>
 </html>

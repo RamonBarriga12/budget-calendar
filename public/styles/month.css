@@ -25,6 +25,10 @@ body {
     text-align: center;
 }
 
+#days .column .segment, #backForToday{
+  cursor: pointer;
+}
+
 thead tr {
   text-align: center;
 }
@@ -49,14 +53,14 @@ thead tr {
 }
 
 /* Previous button inside month header */
-.month .prev {
+.prev {
     float: right;
     padding-top: 10px;
     cursor: pointer;
 }
 
 /* Next button */
-.month .next {
+.next {
     float: left;
     padding-top: 10px;
     cursor: pointer;
@@ -76,40 +80,26 @@ thead tr {
     text-align: center;
 }
 
-/* Days (1-31) */
-.days {
-    padding: 10px 0;
-    background: #eee;
-    margin: 0;
 
+.column.row.seven.days-title div{
+  font-weight: 700;
+  font-size: 120%;
+  margin-bottom: 0;
 }
 
-.days li {
-    list-style-type: none;
-    display: inline-block;
-    width: 13.6%;
-    text-align: center;
-    margin-bottom: 5px;
-
-    color:#777;
-    height: 100px;
-    /*border: 1px solid black;*/
-}
-
-/* Highlight the "current" day */
-.days li.active {
-
-    background: #1abc9c;
-    color: white !important
-}
 
 .active .ui {
   background-color: #D6FFE1;
 }
 
+.ui.grid > .row {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
-
-
+.center {
+  text-align: center;
+}
 
 
 
@@ -123,7 +113,7 @@ thead tr {
     z-index: 1;
     left: 25%;
     top: 40px;
-
+    overflow: auto;
 }
 
 .popuptext thead tr th{
@@ -164,4 +154,26 @@ thead tr {
 
 .coin::after {
     content: ' \20AA ';
+}
+
+
+#monthName {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.month-container {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 45px;
+
+}
+
+main {
+  padding: 30px;
+
+}
+
+.days-title, #days {
+  margin: 0 auto;
 }
