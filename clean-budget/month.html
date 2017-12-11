@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>חודשי</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.rtlcss.com/semantic-ui/2.2.6/semantic.rtl.css" integrity="sha384-h/tGiTStmgbDQyTAdp2s5BfyXn7wmnFsn3vDaCPYck9YKkOuLAdjHi6y154TBVJ4" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
     
@@ -68,45 +67,77 @@
                         <div class="ui orange ribbon label">0</div>
                     </div>
                 </div>
-                <div class="column">
-                    <div class="ui purple segment point small one-day" data-date='05-01-2018'>
-                        <div class="center ui violet header big">-5-</div>
-                        <div class="ui red segment">800</div>
-                        <div class="ui green segment">500</div>
-                        <div class="ui green ribbon label">115</div>
-                    </div>
-                </div>
+                
+<div class="ui purple segment point small one-day" data-date='05-01-2018'>
+    <div class="ui grid">
+        <div class="column ui segment purple">xyz</div>
+    </div>
+    <div class="center ui violet header big">-5-</div>
+    <div class="ui red segment">800</div>
+    <div class="ui green segment">500</div>
+    <div class="ui green ribbon label">115</div>
+</div>
+                
             </div>
         </div>
     </main>
     
     <div class="ui modal">
-      <i class="close icon"></i>
-      <div class="header">
-        Profile Picture <span id="myHeader"></span>
-      </div>
-      <div class="image content">
-        <div class="ui medium image">
-          <img src="/images/avatar/large/chris.jpg">
-        </div>
-        <div class="description">
-          <div class="ui header">We've auto-chosen a profile image for you.</div>
-          <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-          <p>Is it okay to use this photo?</p>
-        </div>
-      </div>
-      <div class="actions">
-        <div class="ui black deny button">
-          Nope
-        </div>
-        <div class="ui positive right labeled icon button">
-          Yep, that's me
-          <i class="checkmark icon"></i>
-        </div>
-      </div>
         
-        <hr>
-    </div>
+        <div class="center ui violet header big">
+            05-12-2017
+        </div>
+        <i class="close icon violet"></i>
+        <div class="content">
+            
+            
+            <div class="column">
+                    <div class="ui purple segment point small one-day" data-date='05-01-2018'>
+                        <div class="center ui red segment"> <div class="header red big wide">outcomes</div>
+                        <div class="ui red segment grid wide">
+                            
+                            <div class='three column row center segment small big wide'>
+                                
+                                <div class="column ">to:</div>
+                                <div class="column ">ref:</div>
+                                <div class="column ">amount:</div>
+                                
+                            
+                            </div>
+
+                            <div class='three column row center segment small'>
+                         
+                                <div class="column">123</div>
+                                <div class="column">123</div>
+                                <div class="column">123</div>
+                            
+                            </div>
+                            
+                            
+                        
+                        </div>
+
+                        </div>
+                        <div class="ui green segment">500</div>
+                        <div class="ui green ribbon label">115</div>
+                    </div>
+                </div>
+            <div class="description">
+            <div class="ui header">We've auto-chosen a profile image for you.</div>
+            <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+            <p>Is it okay to use this photo?</p>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui black deny button">
+            Nope
+            </div>
+            <div class="ui positive right labeled icon button">
+            Yep, that's me
+            <i class="checkmark icon"></i>
+            </div>
+        </div>
+        </div>
     
     
     <script>
@@ -114,14 +145,14 @@
         
         // open modal
         $(".one-day").click(function(e) {
-            buildModal(e);
+        //    buildModal(e);
             $('.ui.modal')
             .modal('show');
         });
         
-        function buildModal (e) {
-            myHeader.innerHTML = e.currentTarget.getAttribute('data-date');
-        }
+       // function buildModal (e) {
+       //     myHeader.innerHTML = e.currentTarget.getAttribute('data-date');
+       // }
         
     </script>
 </body>
