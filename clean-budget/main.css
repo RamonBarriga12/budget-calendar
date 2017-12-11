@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 1000px;
+    direction: rtl;
+    margin: 20px auto;
+}
+
+.center {
+    text-align: center;
+}
+
+.small *, .small{
+    font-size: 16px !important;
+    font-weight: 300;
+}
+
+.big *, .big{
+    font-size: 20px !important;
+    font-weight: 700;
+}
+
+.huge *, .huge{
+    font-size: 30px !important;
+    font-weight: 700;
+}
+
+.tall {
+    margin: 20px;
+}
+
+.next {
+    float: left;
+    margin-left: 10%;
+    padding: 20px 0;
+}
+
+.prev {
+    float: right;
+    margin-right: 10%;
+    padding: 20px 0;
+}
+
+.point {
+    cursor: pointer;
+}
+
+.month-container {
+    padding: 50px;
+    color: #a333c8;
+}
+
+.days-title, .days31 {
+    margin: 0 auto;
+}
+
